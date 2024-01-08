@@ -1,23 +1,31 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 @extends('layouts.app')
 @section('content')
 <div class="row" style="margin:5px; ">
 
 <div class="col-10">
-    <div id="inventario" style="padding: 5px; border-radius: 4px; box-shadow: 1px 2px 2px 2px rgba(0,0,0,0.1);" ></div>
+
+    <div class="div-1" id="inventario" style="padding: 5px; border-radius: 4px; box-shadow: 1px 2px 2px 2px rgba(0,0,0,0.1);" ></div>
 </div>
 
 <div class="col-2">
-    <div id="external-events" style="margin-bottom: 1em; height: 350px; overflow: auto; padding: 1em; border-radius: 4px; box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.1);">
-        <h4 class="text-center" style="border-bottom:solid 2px #eee;">Mis Prácticas</h4>
-        <div id="listaeventospredefinidos">
+    <div class="div-1" id="external-events" style="margin-bottom: 1em; height: 350px; overflow: auto; padding: 1em; border-radius: 4px; box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.2);">
+        <h4 class="text-center" style="border-bottom:solid 2px #eee;"><b>Mis Prácticas</b></h4>
+        <div class="form-group" id="listaeventospredefinidos">
         @foreach ($practicas as $practica)
           <tr>
-            <td>{{$practica->title}}</td>
+            <!--style="background-color: rgb(240, 240, 240); border-radius: 5px;"-->
+            <td><b>{{$practica->title}}</b></td>
+            <td>{{$practica->start}}</td>
             <td>{{$practica->horainicio}}</td>
+            <br>
+            <br>
           </tr>
         @endforeach
     </div>  
   </div>
+  <a href="{{ route('descargarPDFPracticas') }}" class="btn btn-danger">IMPRIMIR PDF</a>
 </div>
 
 
@@ -63,6 +71,11 @@
          </div>
 
          <div class="form-group">
+           <label for="cantidadal">Cantidad alumnos</label>
+           <input type="text" class="form-control" name="cantidadal" id="cantidadal" aria-describedby="helpId" placeholder="cantidad alumnos">
+         </div>
+
+         <div class="form-group">
            <label for="grupo">Grupo</label>
            <input type="text" class="form-control" name="grupo" id="grupo" aria-describedby="helpId" placeholder="Grupo">
          </div>
@@ -79,14 +92,14 @@
 
 
 
-        <div class="form-group col-md-6" id="horainicio">
+        <div class="form-group" id="horainicio">
             <label for="horainicio">Hora de inicio:</label>
             <div class="input-group clockpicker" data-autoclose="true">
                 <input type="text" id="horainicio" name="horainicio" class="form-control" autocomplete="off">
             </div>
         </div>
 
-        <div class="form-group col-md-6" id="horaterminacion">
+        <div class="form-group" id="horaterminacion">
             <label for="horaterminacion">Hora de terminación:</label>
             <div class="input-group clockpicker" data-autoclose="true">
                 <input type="text" id="horaterminacion" name="horaterminacion" class="form-control" autocomplete="off">
@@ -117,3 +130,8 @@
 </div>
 
 @endsection
+
+<style type="text/css"> .div-1 { 
+    background-color: white;
+                            } 
+</style>

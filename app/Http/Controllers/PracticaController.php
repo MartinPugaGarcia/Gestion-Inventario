@@ -17,7 +17,12 @@ class PracticaController extends Controller
     {
         //
         $usuario= Auth::user()->id; 
-        $practicas = Practica::where('idusuario',$usuario)->get();
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $practicas = Practica::where('start', '>=', $date)
+        ->where('idusuario',$usuario)
+        ->orderBy('start','asc')
+        ->get();
         return view('practica.index', ['practicas' => $practicas]);
     }
 
@@ -59,7 +64,7 @@ class PracticaController extends Controller
     {
         //
         $practica = Practica::find($id);
-        $practica->start=Carbon::createFromFormat('Y-m-d H:i:s', $practica->start)->format('Y-m-d');
+    // $practica->start=Carbon::createFromFormat('Y-m-d H:i:s', $practica->start)->format('Y-m-d');
         return response()->json($practica);
     }
 

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
       headerToolbar:{
         left: 'prev, next today',
         center: 'title',
-        right: 'dayGridMonth'
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
 
       // events: baseURL+"/practica/mostrar",
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         formulario.title.value=respuesta.data.title;
         formulario.descripcion.value=respuesta.data.descripcion;
         formulario.aula.value=respuesta.data.aula;
+        formulario.cantidadal.value=respuesta.data.cantidadal;
         formulario.grupo.value=respuesta.data.grupo;
         formulario.docente.value=respuesta.data.docente;
         formulario.start.value=respuesta.data.start;
@@ -62,16 +63,21 @@ document.addEventListener('DOMContentLoaded', function() {
         formulario.horaterminacion.value=respuesta.data.horaterminacion;
         $("#practica").modal("show");
         console.log(formulario.idusuario.value);
-        if(formulario.idusuario.value==uid){
-            btnGuardar.style.display='block';
-            btnModificar.style.display='block';
-            btnEliminar.style.display='block';
-        }
-        else{
-            btnGuardar.style.display='none';
-            btnModificar.style.display='none';
-            btnEliminar.style.display='none';
-        }
+            if(formulario.idusuario.value==uid){
+                btnGuardar.style.display='block';
+                btnModificar.style.display='block';
+                btnEliminar.style.display='block';
+            }
+            else if(uid==3){
+                btnGuardar.style.display='block';
+                btnModificar.style.display='block';
+                btnEliminar.style.display='block';
+            }
+            else{
+                btnGuardar.style.display='none';
+                btnModificar.style.display='none';
+                btnEliminar.style.display='none';
+            }
     }
     ).catch(
         error=>{

@@ -14,6 +14,7 @@ class Practica extends Model
         'title'=>'required',
         'descripcion'=>'required',
         'aula'=>'required',
+        'cantidadal'=>'required',
         'grupo'=>'required',
         'docente'=>'required',
         'start'=>'required',
@@ -21,5 +22,5 @@ class Practica extends Model
         'horaterminacion'=>'required'
     ];
 
-    protected $fillable=['idusuario','title','descripcion','aula','grupo','docente','start','horainicio','horaterminacion'];
+    protected $fillable=['idusuario','title','descripcion','aula','cantidadal','grupo','docente','start','horainicio','horaterminacion'];
 }

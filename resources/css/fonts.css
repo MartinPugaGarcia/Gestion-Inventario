@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Catamaran-Bold.ttf';
+    src: url(../resources/fonts/Catamaran-Bold.ttf);
+}
+
+.titulo {
+    font-family: 'Catamaran-Bold.ttf';
+}

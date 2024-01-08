@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string("title",255);
             $table->text("descripcion"); 
             $table->string("aula",255);
+            $table->string("cantidadal",255);
             $table->string("grupo",255);
             $table->string("docente",255);
-            $table->dateTime("start");
+            $table->date("start");
             $table->time("horainicio");
             $table->time("horaterminacion");
             $table->timestamps();
